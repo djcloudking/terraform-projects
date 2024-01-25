@@ -1,15 +1,16 @@
 # Terraform
 
-This repo is for showing Infrastructure as Code resources creation using Terraform
-
-Terraform is generally used for: 
-
-1. Greenfield deployment
-
-1. Datacenter Migration (Landing Zone)
-
-1. Deploy/Destroy On-demand resources (IaaS/PaaS)
-
-1. Horizontal scaling (add more resources)
-
 Here you will find all the side projects I worked on. 
+
+#### First resource:
+   1. Take your first step with Terraform: Basic commands
+   1. Variables: Find the most used variables in Terraform
+
+#### Terraform Skills Challenge:
+  1. VPC: Create a VPC using Terraform
+  1. EC2: Set up EC2 instance using Terraform 
+
+#### DevOps Project with Terraform
+  1. Automate and Deploy XXXX using Terraform
+
+
