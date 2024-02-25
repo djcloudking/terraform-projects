@@ -2,11 +2,17 @@
 
 ### Log in to AWS console
 
-- Go to EC2 Console
+- Go to EC2 Console.
+
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/51fff0f7-67ae-4c32-b471-607e54054469)
+
 
 - Click on Launch instance.
 
-- Click on Amazon Linux 2 AMI, and select Free Tier eligible Amazon Linux 2023 AMI. 
+- Click on Amazon Linux 2 AMI, and select Free Tier eligible Amazon Linux 2023 AMI.
+
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/b54ad2e4-1e09-43c7-8d66-10668460a934)
+
 
 - At your right side, copy the AMI number and exit the page. 
 
