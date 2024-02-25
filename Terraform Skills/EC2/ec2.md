@@ -1,6 +1,8 @@
 # Setting up EC2 using Terraform
 
-## Step 1: Log in to AWS console
+## Step 1: Gather details for our EC2
+
+- Log in to AWS console
 
 - Go to EC2 Console.
 
@@ -17,11 +19,13 @@
 - At your right side, copy the AMI number and exit the page. 
 
 
-## Step 2: Open Visual Studio Code or another code editor
+## Step 2: Create EC2 instance
 
-- Create a folder called EC2
+- Open Visual Studio Code.  
 
-- Create a file named main.tf
+- Create a folder called **EC2**
+
+- Create a file named **main.tf**
 
 - Write the following script
 
