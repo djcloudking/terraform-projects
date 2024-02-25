@@ -6,3 +6,9 @@
 
 - Under that folder, add a new file. You should name the file **main.tf**.
 
+- Add the script needed to create the VPC. 
+
+- Save it.
+
+## Open the terminal
+
