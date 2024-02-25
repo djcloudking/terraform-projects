@@ -84,6 +84,6 @@
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/099a08dd-815f-42e1-9ac2-ae6544400ca9)
 
 
-**** Voila! You've created EC2 instance using Terraform. 
+##### Voila! You've created EC2 instance using Terraform. 
 
 
