@@ -2,11 +2,14 @@
 
 ### Log in to AWS console
 
-- Go to EC2 instance
+- Go to EC2 Console
 
-- Launch instance 
+- Click on Launch instance.
 
-- Click on Amazon Linux 2 AMI and copy the AMI number
+- Click on Amazon Linux 2 AMI, and select Free Tier eligible Amazon Linux 2023 AMI. 
+
+- At your right side, copy the AMI number and exit the page. 
+
 
 ### Open Visual Studio Code or another code editor
 
