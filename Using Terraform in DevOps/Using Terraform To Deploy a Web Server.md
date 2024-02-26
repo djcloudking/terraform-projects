@@ -47,8 +47,40 @@ Let's begin:
 .
 
 
--  
+- Create an elastic IP or EIP address. 
+
+
+.
+
+
+- Go back to the script above and replace "ec2" in both resources with "db" and "web"
+
+
+.
+
 
 ## Step 3: Create a security group for the web server opening ports 80 and 443
+
+- Before creating the security group, let's define 2 variables
+
+
+.
+
+
+- Now create the security group.
+
+- Add the following script to **main.tf**.
+
+
+.
+
+
+- Copy the same script and change *ingress* by *egress*. Paste it below the previous script in the same file **main.tf**. Also replace *ingress* by *egress* evrywhere in the second snipet of code.
+
+
+.
+
+
+- 
 
 ## Step 4: Run the provided script on the server
