@@ -102,3 +102,11 @@ Let's begin:
 - Go to the terminal. 
 
 - Execute these commands respectively `terraform init`, `terraform apply`
+
+- You may encounter an error when calling user_data. 
+
+
+.
+
+
+- 
