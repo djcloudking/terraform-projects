@@ -28,7 +28,13 @@ Let's begin:
 .
 
 
+- Create a **main.tf** file, and add the script below to the file.
+
+.
+
+
 - 
+
 
 ## Step 2: Create a web server and ensure it has a fix IP
 
