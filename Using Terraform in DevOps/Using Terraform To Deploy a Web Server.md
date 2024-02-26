@@ -4,10 +4,13 @@ In this tutorial I will talk about the following scenario:
 
 You are the DevOps engineer on watch. You supervisor asked to implement some resources in the company AWS environment. He asked you: 
 
-    . Create a DB server and output a private IP.
-    . Create a web server and ensure it has a fix IP.
-    . Create a security group for the web server opening ports 80 and 443 (Http & https).
-    . Run the provided script on the server. 
+1) Create a DB server and output a private IP.
+   
+2) Create a web server and ensure it has a fix IP.
+
+3) Create a security group for the web server opening ports 80 and 443 (Http & https).
+
+4) Run the provided script on the server. 
 
 
 Let's begin:
