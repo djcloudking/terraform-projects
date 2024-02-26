@@ -92,7 +92,7 @@ Let's begin:
 .
 
 
-- Now add *user_data* file to resource "aws_instance" "web" under security group.
+- Now add the bootstrap *user_data* file to resource "aws_instance" "web" under security group.
 
 - Verify everything looks correct and add a provider at the top of **main.tf**. 
 
