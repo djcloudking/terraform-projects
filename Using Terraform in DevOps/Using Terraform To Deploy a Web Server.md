@@ -98,3 +98,7 @@ Let's begin:
 
 
 ## Step 4: Run the provided script on the server
+
+- Go to the terminal. 
+
+- Execute these commands respectively `terraform init`, `terraform apply`
