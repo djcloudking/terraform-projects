@@ -81,6 +81,17 @@ Let's begin:
 .
 
 
-- 
+- Go back to **resource "aws_instance" "web"** line, and add security group to it. 
+
+- Next create output Private IP and public IP. Add the code at the end of **main.tf**. Do not forget to make changes to public IP resource. See screeshot below. 
+
+
+.
+
+
+- Now add *user_data* file to resource "aws_instance" "web" under security group.
+
+- Verify everything looks correct and add a provider at the top of **main.tf**. 
+
 
 ## Step 4: Run the provided script on the server

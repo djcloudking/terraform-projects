@@ -12,7 +12,7 @@ resource "aws_instance" "db" {
 resource "aws_instance" "web" {
     ami = "ami-0440d3b780d96b29d"
     instance_type = "t2.micro" 
-    
+    security_groups = [aws_security_group.web_traffic.name]
     tags = {
         Name = "Web Server"
     } 
@@ -60,4 +60,12 @@ resource "aws_security_group" "web_traffic" {
           cidr_blocks = ["0.0.0.0/0"]
         }   
     }
+}
+
+output "PrivateIP" {
+    value = aws_instance.db.private_ip
+}
+
+output "PublicIP" {
+    value = aws_eip.web_ip.public_ip 
 }
