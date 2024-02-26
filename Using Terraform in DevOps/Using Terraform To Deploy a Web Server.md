@@ -33,10 +33,8 @@ Let's begin:
 
 - Create a **main.tf** file, and add the script below to the file.
 
-![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/a6811b7c-e94e-41c1-9f1f-25098297b878)
-
-
 - Create the ec2 resource.
+
 
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/cd0fa240-3d7e-4aaf-beed-4ece6c066c0a)
 
@@ -46,25 +44,26 @@ Let's begin:
 - Copy the same script but replace tag name with **"Web server"**.
 
 
-![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/8a8746a3-3d0c-4827-bebb-a8e60e95d7fb)
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/a6811b7c-e94e-41c1-9f1f-25098297b878)
 
 
 - Create an elastic IP or EIP address. 
 
 
-![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/016aee13-44a9-4601-ba47-33bc6a95f380)
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/8a8746a3-3d0c-4827-bebb-a8e60e95d7fb)
 
 
 - Go back to the script above and replace "ec2" in both resources with "db" and "web"
 
-
-![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/af0b4530-deca-4fc6-8275-646086dd3f88)
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/016aee13-44a9-4601-ba47-33bc6a95f380)
 
 
 ## Step 3: Create a security group for the web server opening ports 80 and 443
 
 - Before creating the security group, let's define 2 variables
 
+
+![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/af0b4530-deca-4fc6-8275-646086dd3f88)
 
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/508d7b3c-f14e-4414-912f-db7fa3c9d449)
 
