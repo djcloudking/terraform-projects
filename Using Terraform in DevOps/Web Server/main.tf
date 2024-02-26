@@ -48,10 +48,6 @@ resource "aws_security_group" "web_traffic" {
           cidr_blocks = ["0.0.0.0/0"]
         }   
     }
-}
-
-resource "aws_security_group" "web_traffic" {
-    name = "Allow web traffic"
 
     dynamic "egress" {
         iterator = port
