@@ -24,26 +24,21 @@
 
 - Locate **vpc_challenege** folder.
 
-- Now execute the following commands in the terminal:
-
-    - `terraform init`
+- Now execute the following commands in the terminal: `terraform init`
       
  
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/7a393e83-0d05-47a7-9811-c2ae0f86b043)
 
 
-    - Verify if the cidr_block is correct, then type Yes.
+    - Verify if the cidr_block is correct. Verify if resource has all the specifications as you wanted. Then type Yes.
 
 
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/2e0ce600-72d6-42eb-98d5-1ae09687d129)
 
 
-- Enter terraform apply
+- Now Enter terraform apply
 
-
-## Verification and Testing
-
-- Now go to the VPC console and look for the VPC you just created.
+- Now go back to the AWS VPC console and look for the VPC you just created.
   
 
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/5dbb87cc-1e8a-4b5f-8aa4-5e9684759138)
