@@ -32,7 +32,7 @@
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/7a393e83-0d05-47a7-9811-c2ae0f86b043)
 
 
-    - Verify if the cidr_block is correct and enter`terraform apply`, then type Yes.
+    - Verify if the cidr_block is correct and enter terraform apply, then type Yes.
 
 
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/2e0ce600-72d6-42eb-98d5-1ae09687d129)
