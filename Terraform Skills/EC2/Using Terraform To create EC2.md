@@ -1,4 +1,4 @@
-# Setting up EC2 using Terraform
+# Setting up EC2 using Terraform.
 
 
 ## Step 1: Gather details for our EC2
