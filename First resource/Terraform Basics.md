@@ -2,13 +2,13 @@
 
 ### Commands
 
-- Terraform init
+- Terraform init: initializes the Terraform working directory, downloading any necessary provider plugins.
 
-- Terraform plan
+- Terraform plan: displays a plan of the changes it's going to make. Review the plan and type "yes" when prompted to apply it.
 
-- Terraform apply
+- Terraform apply: create the AWS resources defined in your Terraform configuration.
 
-- Terraform destroy
+- Terraform destroy: remove the resources created by Terraform.
   
 
 ### Variables
