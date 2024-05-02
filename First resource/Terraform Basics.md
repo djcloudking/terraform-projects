@@ -12,3 +12,7 @@
   
 
 ### Variables
+
+- input
+
+- output
