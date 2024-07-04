@@ -17,7 +17,7 @@ Let's begin:
 
 ## Step 1: Create a DB server and output a private IP
 
-- Open VS code.
+- Open VS code
 
 - Create a folder named **Web Server**. 
 
