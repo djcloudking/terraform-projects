@@ -1,4 +1,4 @@
-# Using Terraform To Deploy a Web Server
+# Using Terraform To Deploy a web server
 
 In this tutorial I will talk about the following scenario:
 
