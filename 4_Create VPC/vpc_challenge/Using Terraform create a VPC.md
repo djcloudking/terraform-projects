@@ -17,7 +17,7 @@
 ![image](https://github.com/djcloudking/terraform-challenges/assets/122766532/70879e6f-8cd8-4059-b8d5-72ce37ce6af6)
 
 
-- Save all.
+- Save all
 
 
 ## Open the terminal
