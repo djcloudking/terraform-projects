@@ -67,19 +67,19 @@ resource "aws_security_group" "dj_sg" {
 }
 
 resource "aws_key_pair" "dj_auth" {
-  key_name = "djkey"
+  key_name   = "djkey"
   public_key = file("~/.ssh/djkey.pub")
 }
 
 resource "aws_instance" "dev_node" {
-  instance_type = "t2.micro"
-  ami = data.aws_ami.server_ami.id
-  key_name = aws_key_pair.dj_auth.id
+  instance_type          = "t2.micro"
+  ami                    = data.aws_ami.server_ami.id
+  key_name               = aws_key_pair.dj_auth.id
   vpc_security_group_ids = [aws_security_group.dj_sg.id]
-  subnet_id = aws_subnet.dj_public_subnet.id
+  subnet_id              = aws_subnet.dj_public_subnet.id
 
-    root_block_device {
-    volume_size = 10  
+  root_block_device {
+    volume_size = 10
   }
 
   tags = {
