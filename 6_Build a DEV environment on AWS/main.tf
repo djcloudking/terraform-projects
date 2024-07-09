@@ -66,3 +66,7 @@ resource "aws_security_group" "dj_sg" {
   }
 }
 
+resource "aws_key_pair" "dj_auth" {
+  key_name = "djkey"
+  public_key = file("~/.ssh/djkey.pub")
+}
