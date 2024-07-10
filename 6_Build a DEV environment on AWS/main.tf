@@ -86,4 +86,14 @@ resource "aws_instance" "dev_node" {
   tags = {
     Name = "dev_node"
   }
+
+  provisioner "local-exec" {
+    command = templatefile("windows-ssh-config.tpl", {
+      hostname = self.public_ip, 
+      user = "ubuntu",
+      identifile = "~/.ssh/djkey"
+    })
+
+    interpreter = ["powershell", " -command"]
+  }
 }
