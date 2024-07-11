@@ -93,6 +93,6 @@ resource "aws_instance" "dev_node" {
           user = "ubuntu",
           identityfile = "~/.ssh/djkey"
       })
-    interpreter = ["Powershell", " -Command"]
+    interpreter =  var.host_os == "windows" ? ["Powershell", " -Command"] : ["bash", "c"]
   }
 }
