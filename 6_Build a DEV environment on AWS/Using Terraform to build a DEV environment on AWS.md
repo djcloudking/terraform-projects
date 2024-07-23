@@ -107,4 +107,4 @@
 
 **Read more**
 
-Find more details, the steps by steps guide in this article about how I was able to set up a secure AWS environment with Docker using Terraform, manage AWS resources efficiently, and connect to AWS instances using VSCode's Remote SSH extension. 
+Find more details, the steps by steps guide in this article about how I was able to set up a secure AWS environment with Docker using Terraform, manage AWS resources efficiently, and connect to AWS instances using VSCode's Remote SSH extension. Click the link =>> https://medium.com/@djakkone/building-a-dev-environment-on-aws-using-terraform-9e4c4a8522c6
