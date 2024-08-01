@@ -11,6 +11,6 @@ provider "aws" {
 }
 
 resource "aws_instance" "dj_instance" {
-    ami = ""
-    instance_type = ""
+    ami = var.ami_value
+    instance_type = var.instance_type_value
 }
