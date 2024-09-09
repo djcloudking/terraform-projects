@@ -1,7 +1,9 @@
+# Define Provider
 provider "aws" {
   region = "us-east-2"
 }
 
+# Define VPC & subnet
 resource "aws_vpc" "djvpc" {
   cidr_block = "15.0.0.0/16"
 }
@@ -12,32 +14,24 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 }
 
-resource "aws_security_group" "ec2_sg" {
-  vpc_id      = aws_vpc.main.id
-  
-  
-  
-  tags = {
-    Name = "ec2_sg"
+# Define security group
+resource "aws_security_group" "djsg" {
+  description = "Security group for for EC2, RDS, and ALB to Allow all inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.djvpc.id
+
+  ingress = {
+     from_port         = 80
+     to_port           = 80 
+     ip_protocol       = "tcp"
+     cidr_block         = ["0.0.0.0/0"] # Allow from all
   }
-}
-
-resource "aws_vpc_security_group_ingress_rule" "example" {
-  security_group_id = aws_security_group.example.id
-
-  cidr_ipv4   = "10.0.0.0/8"
-  from_port   = 80
-  ip_protocol = "tcp"
-  to_port     = 80
-}
-
-resource "aws_vpc_security_group_egress_rule" "example" {
-  security_group_id = aws_security_group.example.id
-
-  cidr_ipv4   = "10.0.0.0/8"
-  from_port   = 80
-  ip_protocol = "tcp"
-  to_port     = 80
+ 
+  egress = {
+     from_port         = 0
+     to_port           = 0 
+     ip_protocol       = "-1" # semantically equivalent to all ports
+     cidr_block         = ["0.0.0.0/0"] 
+  }
 }
 
 
