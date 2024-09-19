@@ -1,17 +1,14 @@
+# Declare the provider
 provider "aws" {
-  region = "us-east-2"
-
-  default_tags {
-    tags = {
-      hashicorp-learn = "aws-asg"
-    }
+  region = "us-east-1"
   }
-}
 
+# Declare the AZ
 data "aws_availability_zones" "available" {
   state = "available"
 }
 
+# Declare VPC
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.77.0"
@@ -25,50 +22,54 @@ module "vpc" {
   enable_dns_support   = true
 }
 
+# Declare AMI
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]  # This might not be necessary anymore
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-ebs"]  # Specific Amazon Linux 2 pattern
+    values = ["ami-0ebfd941bbafe70c6"]  # Specific Amazon Linux 2 pattern
   }
 }
 
-resource "aws_launch_configuration" "terratutorial" {
-  name_prefix     = "learn-terraform-aws-asg-"
+# Declare Launch Configuration before ASG
+resource "aws_launch_configuration" "djtuto" {
+  name_prefix     = "aws-asg-"
   image_id        = data.aws_ami.amazon_linux.id  # Now references the declared resource
   instance_type   = "t2.micro"
-
 }
 
-resource "aws_autoscaling_group" "terratutorial" {
-  name                 = "terratutorial"
+# Declare autoscaling group
+resource "aws_autoscaling_group" "djtuto" {
+  name                 = "djtuto"
   min_size             = 1
   max_size             = 3
   desired_capacity     = 1
-  launch_configuration = aws_launch_configuration.terratutorial.name
+  launch_configuration = aws_launch_configuration.djtuto.name
   vpc_zone_identifier  = module.vpc.public_subnets
 
   health_check_type    = "ELB"
 
   tag {
     key                 = "Name"
-    value               = "Learn ASG - terratutorial"
+    value               = "Deploy ASG - tuto"
     propagate_at_launch = true
   }
 }
 
+# Declare autoscaling policy
 resource "aws_autoscaling_policy" "scale_down" {
-  name                   = "terratutorial-scale-down"
+  name                   = "djtuto-scale-down"
   scaling_adjustment     = -1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 120
-  autoscaling_group_name = aws_autoscaling_group.terratutorial.name
+  autoscaling_group_name = aws_autoscaling_group.djtuto.name
 }
 
+# Declare cloudwatch metric
 resource "aws_cloudwatch_metric_alarm" "scale_down" {
-  alarm_name          = "terratutorial-scale-down"
+  alarm_name          = "djtuto-scale-down"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "2"                          # 2 minutes
   metric_name         = "CPUUtilization"
@@ -78,23 +79,25 @@ resource "aws_cloudwatch_metric_alarm" "scale_down" {
   threshold           = "10"
 
   dimensions = {
-    AutoScalingGroupName = aws_autoscaling_group.terratutorial.name
+    AutoScalingGroupName = aws_autoscaling_group.djtuto.name
   }
 
   alarm_description = "This metric monitors ec2 cpu utilization"
   alarm_actions     = [aws_autoscaling_policy.scale_down.arn]
 }
 
-resource "aws_lb" "terratutorial" {
-  name               = "learn-asg-terratutorial-lb"
+# Declare load balancer
+resource "aws_lb" "djtuto" {
+  name               = "learn-asg-tuto-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.terratutorial_lb.id]
+  security_groups    = [aws_security_group.djtuto_lb.id]
   subnets            = module.vpc.public_subnets
 }
 
-resource "aws_lb_listener" "terratutorial" {
-  load_balancer_arn = aws_lb.terratutorial.arn
+# Declare Load balancer listener
+resource "aws_lb_listener" "djtuto" {
+  load_balancer_arn = aws_lb.djtuto.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -104,26 +107,28 @@ resource "aws_lb_listener" "terratutorial" {
   }
 }
 
-resource "aws_lb_target_group" "terratutorial" {
-  name     = "learn-asg-terratutorial"
+# Declare target group
+resource "aws_lb_target_group" "djtuto" {
+  name     = "learn-asg-djtuto"
   port     = 80
   protocol = "HTTP"
   vpc_id   = module.vpc.vpc_id
 }
 
-
-resource "aws_autoscaling_attachment" "terratutorial" {
-  autoscaling_group_name = aws_autoscaling_group.terratutorial.id
-  alb_target_group_arn   = aws_lb_target_group.terratutorial.arn
+# Declare autoscaling attachment
+resource "aws_autoscaling_attachment" "djtuto" {
+  autoscaling_group_name = aws_autoscaling_group.djtuto.id
+  lb_target_group_arn   = aws_lb_target_group.djtuto.arn
 }
 
-resource "aws_security_group" "terratutorial_instance" {
+# Declare security group for EC2
+resource "aws_security_group" "djtuto_instance" {
   name = "learn-asg-terratutorial-instance"
   ingress {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    security_groups = [aws_security_group.terratutorial_lb.id]
+    security_groups = [aws_security_group.djtuto_lb.id]
   }
 
   egress {
@@ -136,8 +141,9 @@ resource "aws_security_group" "terratutorial_instance" {
   vpc_id = module.vpc.vpc_id
 }
 
-resource "aws_security_group" "terratutorial_lb" {
-  name = "learn-asg-terratutorial-lb"
+# Declare security group for Load balancer
+resource "aws_security_group" "djtuto_lb" {
+  name = "learn-asg-djtuto-lb"
   ingress {
     from_port   = 80
     to_port     = 80
