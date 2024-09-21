@@ -9,34 +9,46 @@ data "aws_availability_zones" "available" {
 }
 
 # Declare VPC
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "2.77.0"
+resource "aws_vpc" "dj_vpc" {
+  cidr_block = "10.0.0.0/16"
 
-  name = "main-vpc"
-  cidr = "10.0.0.0/16"
-
-  azs                  = data.aws_availability_zones.available.names
-  public_subnets       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
-  enable_dns_hostnames = true
-  enable_dns_support   = true
+  tags = {
+    Name = "dj_vpc"
+  }
 }
 
-# Declare AMI
-data "aws_ami" "amazon_linux" {
-  most_recent = true
-  owners      = ["amazon"]  # This might not be necessary anymore
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.dj_vpc.id
+  cidr_block = "10.0.1.0/24"
 
-  filter {
-    name   = "name"
-    values = ["ami-0ebfd941bbafe70c6"]  # Specific Amazon Linux 2 pattern
+  tags = {
+    Name = "Main"
+  }
+}
+
+resource "aws_subnet" "pain" {
+  vpc_id     = aws_vpc.dj_vpc.id
+  cidr_block = "10.0.0.0/24"
+
+  tags = {
+    Name = "Pain"
+  }
+}
+
+# Declare EC2
+resource "aws_instance" "test" {
+  ami           = "ami-0ebfd941bbafe70c6"
+  instance_type = "t2.micro"
+
+    tags = {
+    Name = "DjEctwo"
   }
 }
 
 # Declare Launch Configuration before ASG
 resource "aws_launch_configuration" "djtuto" {
   name_prefix     = "aws-asg-"
-  image_id        = data.aws_ami.amazon_linux.id  # Now references the declared resource
+  image_id        = aws_instance.test.ami  
   instance_type   = "t2.micro"
 }
 
@@ -47,7 +59,7 @@ resource "aws_autoscaling_group" "djtuto" {
   max_size             = 3
   desired_capacity     = 1
   launch_configuration = aws_launch_configuration.djtuto.name
-  vpc_zone_identifier  = module.vpc.public_subnets
+  vpc_zone_identifier  = [aws_subnet.main.id] 
 
   health_check_type    = "ELB"
 
@@ -86,61 +98,6 @@ resource "aws_cloudwatch_metric_alarm" "scale_down" {
   alarm_actions     = [aws_autoscaling_policy.scale_down.arn]
 }
 
-# Declare load balancer
-resource "aws_lb" "djtuto" {
-  name               = "learn-asg-tuto-lb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.djtuto_lb.id]
-  subnets            = module.vpc.public_subnets
-}
-
-# Declare Load balancer listener
-resource "aws_lb_listener" "djtuto" {
-  load_balancer_arn = aws_lb.djtuto.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.terratutorial.arn
-  }
-}
-
-# Declare target group
-resource "aws_lb_target_group" "djtuto" {
-  name     = "learn-asg-djtuto"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = module.vpc.vpc_id
-}
-
-# Declare autoscaling attachment
-resource "aws_autoscaling_attachment" "djtuto" {
-  autoscaling_group_name = aws_autoscaling_group.djtuto.id
-  lb_target_group_arn   = aws_lb_target_group.djtuto.arn
-}
-
-# Declare security group for EC2
-resource "aws_security_group" "djtuto_instance" {
-  name = "learn-asg-terratutorial-instance"
-  ingress {
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    security_groups = [aws_security_group.djtuto_lb.id]
-  }
-
-  egress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
-
-  vpc_id = module.vpc.vpc_id
-}
-
 # Declare security group for Load balancer
 resource "aws_security_group" "djtuto_lb" {
   name = "learn-asg-djtuto-lb"
@@ -158,5 +115,14 @@ resource "aws_security_group" "djtuto_lb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  vpc_id = module.vpc.vpc_id
+  vpc_id = aws_vpc.dj_vpc.id 
+}
+
+# Declare load balancer
+resource "aws_lb" "djtuto" {
+  name               = "learn-asg-tuto-lb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.djtuto_lb.id]
+  subnets            = [aws_subnet.main.id, aws_subnet.pain.id]
 }
