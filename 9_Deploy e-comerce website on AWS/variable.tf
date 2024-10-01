@@ -48,3 +48,10 @@ variable "private_data_subnet_az2_cidr" {
     description = "public data subnet az2 cidr block"
     type = string
 }
+
+# create variables ssh location
+variable "ssh_location" {
+    default = "73.136.44.55/32" # My IP address
+    description = "shh cidr block"
+    type = string
+}
