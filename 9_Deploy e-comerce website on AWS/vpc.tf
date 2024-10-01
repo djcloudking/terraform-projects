@@ -19,5 +19,47 @@ resource "aws_internet_gateway" "djgw" {
 }
 
 # Create Public Subnet az1
+resource "aws_subnet" "public_subnet_az1" {
+    vpc_id = aws_vpc.djvpc.id
+
+    cidr_block = var.public_subnet_az1_cidr
+    availability_zone = "us-east-1a"
+    map_public_ip_on_launch = true 
+
+    tags = {
+        Name = "public subnet az1"
+    }  
+}
 
 # Create Public Subnet az2
+resource "aws_subnet" "public_subnet_az2" {
+    vpc_id = aws_vpc.djvpc.id
+
+    cidr_block = var.public_subnet_az2_cidr
+    availability_zone = "us-east-2a"
+    map_public_ip_on_launch = true 
+
+    tags = {
+        Name = "public subnet az2"
+    }   
+}
+
+# Create route table
+resource "aws_route_table" "public_route_table" {
+  vpc_id = aws_vpc.djvpc.id
+
+  route {
+    cidr_block = "0.0.0.0/24"
+    gateway_id = aws_internet_gateway.djgw.id
+  }
+
+  tags = {
+    Name = "public route table"
+  }
+}
+
+# Associate public subnet az 1 to public route table 
+resource "aws_route_table_association" "public_subnet_az1_route_table_association" {
+    subnet_id = aws_subnet.public_subnet_az1.id
+    route_table_id = aws_route_table.public_route_table.id
+}
