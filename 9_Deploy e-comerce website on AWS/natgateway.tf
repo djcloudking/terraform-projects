@@ -43,7 +43,7 @@ resource "aws_nat_gateway" "dj_natgw_az2" {
 }
 
 # Create private route table az1 and route through nat gateway
-resource "aws_route_table" "private_app_route_table_az1" {
+resource "aws_route_table" "private_route_table_az1" {
     vpc_id = aws_vpc.djvpc.id
     
   route {
@@ -56,17 +56,19 @@ resource "aws_route_table" "private_app_route_table_az1" {
   }
 }
 
+# Associate private app subnet az1 to private route table az1
 resource "aws_route_table_association" "private_app_subnet_az1_route_table_az1_association" {
     subnet_id = aws_subnet.private_app_subnet_az1.id
     route_table_id = aws_route_table.private_route_table.id
 }
 
+# Associate private data subnet az1 to private route table az1
 resource "aws_route_table_association" "private_data_subnet_az1_route_table_az1_association" {
     subnet_id = aws_subnet.private_app_subnet_az1.id
     route_table_id = aws_route_table.private_route_table.id
 }
 
-# Create private route table az2 and route through nat gateway Az2
+# Create private route table az2 and add route through nat gateway Az2
  resource "aws_route_table" "private_app_route_table_az2" {
     vpc_id = aws_vpc.djvpc.id
     
@@ -80,12 +82,14 @@ resource "aws_route_table_association" "private_data_subnet_az1_route_table_az1_
   }
 }
 
+# Associate private app subnet az2 to private route table az2
 resource "aws_route_table_association" "private_app_subnet_az2_route_table_az2_association" {
     subnet_id = aws_subnet.private_app_subnet_az2.id
     route_table_id = aws_route_table.private_route_table.id
 }
 
+# Associate private data subnet az2 to private route table az2
 resource "aws_route_table_association" "private_data_subnet_az2_route_table_az2_association" {
-    subnet_id = aws_subnet.private_app_subnet_az2.id
+    subnet_id = aws_subnet.private_data_subnet_az2.id
     route_table_id = aws_route_table.private_route_table_az2.id
 }
