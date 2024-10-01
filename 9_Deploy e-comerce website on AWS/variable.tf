@@ -15,8 +15,8 @@ variable "public_subnet_az1_cidr" {
 }
 
 # create public subnet variables az2
-variable "public_subnet_az1_cidr" {
-    default = "10.0.0.1/24"
+variable "public_subnet_az2_cidr" {
+    default = "10.0.1.0/24"
     description = "public subnet az2 cidr block"
     type = string
 }
