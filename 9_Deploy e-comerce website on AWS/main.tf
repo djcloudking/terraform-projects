@@ -1,5 +1,5 @@
 # Configure AWS provider
-provider "AWS" {
+provider "aws" {
     region = "us-east-1"
     profile = "djadmin-general"
 }
