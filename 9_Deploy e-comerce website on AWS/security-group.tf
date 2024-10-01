@@ -64,7 +64,7 @@ resource "aws_security_group" "ssh_sg" {
 
 # Create a security group for the web server
 resource "aws_security_group" "webserver_security_group" {
-  name        = "ssh security group"
+  name        = "webserver security group"
   description = "enable http/https access on port 80/443 via alb sg and access on port 22 via ssh sg"
   vpc_id      = aws_vpc.djvpc.id
   
