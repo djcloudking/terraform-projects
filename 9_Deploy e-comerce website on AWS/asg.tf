@@ -3,7 +3,7 @@ resource "aws_launch_template" "webserver_launch_template" {
   name          = "dev-launch-template"
   image_id      = "ami-0ebfd941bbafe70c6"
   instance_type = "t2.micro"
-  key_name      = aws_key_pair.generated_key_pair.djkp
+  key_name      = "djkp"
   description   = "launch template for asg"
 
   monitoring {
