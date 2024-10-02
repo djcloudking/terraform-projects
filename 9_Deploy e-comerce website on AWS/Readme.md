@@ -1,9 +1,10 @@
 **Deploying an E-commerce Website on AWS Using Terraform**
 
 
-### Prerequisites
+## Prerequisites
 
-##### If this is your first time using terraform, follow these steps:
+
+If this is your first time using terraform, follow these steps:
 
 1. **Install Terraform**: Set up Terraform on your local machine to automate your infrastructure using code.
 
@@ -25,10 +26,11 @@
 
 10. **Create an S3 Bucket for Terraform State**: Set up an S3 bucket to securely store the Terraform state file, ensuring consistency across deployments.
 
-##### If you have used Terraform in the past, skip to 10. 
+
+If you have used Terraform in the past, skip to 10. 
 
 
-### Infrastructure Deployment
+## Infrastructure Deployment
 
 
 1. **Authenticate to AWS**: Use your AWS CLI named profile to authenticate and manage AWS services programmatically.
@@ -45,7 +47,7 @@
 
 7. **Set Up an SNS Topic**: Implement Terraform to configure an AWS Simple Notification Service (SNS) topic for event-driven messaging.
 
-8. **Create an Auto Scaling Group**: Use Terraform to create an Auto Scaling Group, which will dynamically adjust your instance count based on traffic demand.
+8. **Create an Auto Scaling Group**: Use Terraform to create an Auto Scaling Group, which will dynamically adjust your instance count based on traffic demand
 
 9. **Configure a Record Set in Route 53**: Use Terraform to set up a record set in AWS Route 53 for domain management and DNS resolution.
 
