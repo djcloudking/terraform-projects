@@ -1,57 +1,30 @@
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "18.29.0"
-
-  cluster_name    = "dj-eks"
-  cluster_version = "1.23"
-
-  cluster_endpoint_private_access = true
-  cluster_endpoint_public_access  = true
-
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  source          = "terraform-aws-modules/eks/aws"
+  version         = "20.8.4"
+  cluster_name    = local.cluster_name
+  cluster_version = var.kubernetes_version
+  subnet_ids      = module.vpc.private_subnets
 
   enable_irsa = true
 
+  tags = {
+    cluster = "demo"
+  }
+
+  vpc_id = module.vpc.vpc_id
+
   eks_managed_node_group_defaults = {
-    disk_size = 50
+    ami_type               = "AL2_x86_64"
+    instance_types         = ["t3.medium"]
+    vpc_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   }
 
   eks_managed_node_groups = {
-    general = {
-      desired_size = 1
-      min_size     = 1
-      max_size     = 10
 
-      labels = {
-        role = "general"
-      }
-
-      instance_types = ["t3.small"]
-      capacity_type  = "ON_DEMAND"
+    node_group = {
+      min_size     = 2
+      max_size     = 6
+      desired_size = 2
     }
-
-    spot = {
-      desired_size = 1
-      min_size     = 1
-      max_size     = 10
-
-      labels = {
-        role = "spot"
-      }
-
-      taints = [{
-        key    = "market"
-        value  = "spot"
-        effect = "NO_SCHEDULE"
-      }]
-
-      instance_types = ["t3.micro"]
-      capacity_type  = "SPOT"
-    }
-  }
-
-  tags = {
-    Environment = "staging"
   }
 }
