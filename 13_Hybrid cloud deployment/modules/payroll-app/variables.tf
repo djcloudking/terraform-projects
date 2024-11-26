@@ -5,3 +5,7 @@ variable "ami" {
 variable "app_region" {
     default = "us-east-2" 
 }
+
+variable "bucket" {
+    default = "payroll_data" 
+}
