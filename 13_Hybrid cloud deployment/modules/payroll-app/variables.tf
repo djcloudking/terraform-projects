@@ -1,5 +1,5 @@
 variable "ami" {
-    default = "ami-0c80e2b6ccb9ad6d1" 
+    default = "ami-0c02fb55956c7d316" 
 }
 
 variable "app_region" {
@@ -7,5 +7,5 @@ variable "app_region" {
 }
 
 variable "bucket" {
-    default = "payroll_data" 
+    default = "general-payroll-data" 
 }
