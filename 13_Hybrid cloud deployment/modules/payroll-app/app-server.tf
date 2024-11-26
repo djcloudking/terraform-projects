@@ -5,5 +5,5 @@ resource "aws_instance" "app_server" {
         tags = {
           Name = "${var.app_region}-app-server"
         }
-    depends_on = [ aws_dynamodb_table.payroll_db, aws_s3_bucket.payroll_data]
+    depends_on = [ aws_dynamodb_table.payroll_db, aws_s3_bucket.general-payroll-data]
 }
