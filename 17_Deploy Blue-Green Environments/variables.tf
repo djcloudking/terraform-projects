@@ -108,6 +108,6 @@ locals {
 }
 
 variable "traffic_distribution" {
-  description = "Levels of traffic distribution"
+  description = "Levels of all traffic distribution"
   type        = string
 }
