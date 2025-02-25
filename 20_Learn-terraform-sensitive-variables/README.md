@@ -6,7 +6,7 @@ Deploy a secure web application on AWS using Terraform, while ensuring that sens
 Key security measures included marking variables as sensitive, using environment variables for secret injection, and securing Terraform state files.
 
 
-### What I did:###
+### What I did:
 
 **Terraform Infrastructure**: Deployed a VPC, ALB, EC2 instances, and an RDS database using Infrastructure as Code (IaC).
     
@@ -19,7 +19,7 @@ Key security measures included marking variables as sensitive, using environment
 **Access Control & IAM**: Restricted access to state files and sensitive outputs using IAM policies.
 
 
-### Key Technologies & Tools Used:###
+### Key Technologies & Tools Used:
 
 - **Terraform:** Infrastructure as Code for AWS resource provisioning.
     
@@ -32,7 +32,7 @@ Key security measures included marking variables as sensitive, using environment
 - **Git & .gitignore:** Prevented sensitive data from being committed to version control.
 
 
-### What you’ll learn:###
+### What you’ll learn:
 
 - How to protect sensitive data in Terraform using built-in security features.
     
