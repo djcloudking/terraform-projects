@@ -7,7 +7,6 @@
 
 2.	Fix a variable interpolation issue
 
-
 3.	Validate the configuration
 
 4.	Resolve a cycle dependency error
@@ -19,4 +18,4 @@
 7.	Apply the corrected configuration
 
 
-Find the full tutorial here: [Troubleshooting Terraform ](https://d) tutorial. 
+Find the full tutorial here: [Troubleshooting Terraform ](https://cloudwithdj.com/how-to-troubleshoot-terraform/) . 
