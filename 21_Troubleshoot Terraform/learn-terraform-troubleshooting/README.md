@@ -1,3 +1,22 @@
-# Learn Terraform Troubleshooting
+# Troubleshooting Terraform 
 
-This is a companion repository for the [Learn Terraform Troubleshooting](https://developer.hashicorp.com/terraform/tutorials/configuration-language/troubleshooting-workflow) tutorial. Follow along to learn more about configuration language troubleshooting.
+
+### Debugging Steps
+
+1.	Format the configuration file
+
+2.	Fix a variable interpolation issue
+
+
+3.	Validate the configuration
+
+4.	Resolve a cycle dependency error
+
+5.	Fix a for_each loop issue
+
+6.	Adjust outputs to return all values
+
+7.	Apply the corrected configuration
+
+
+Find the full tutorial here: [Troubleshooting Terraform ](https://d) tutorial. 
