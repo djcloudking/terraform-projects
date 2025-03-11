@@ -15,9 +15,9 @@ Before you get started, make sure you have the following:
 
 ### Clone the Repository
 
-`git clone https://github.com/djcloudking/terraform-challenges.git
+`git clone https://github.com/djcloudking/terraform-challenges.git`
 
-`cd terraform-challenges/11_Create a EKS Cluster using Terraform Modules
+`cd terraform-challenges/11_Create a EKS Cluster using Terraform Modules`
 
 
 ### Configure AWS
@@ -44,17 +44,17 @@ Find the 6 modules here: [Terraform EKS Modules](https://github.com/djcloudking/
 
 #### Initialize Terraform
 
-`terraform init
+`terraform init`
  
 
 #### Review Terraform Plan  
 
-`terraform plan
+`terraform plan`
  
  
 #### Apply Terraform to Deploy EKS Cluster
 
-`terraform apply
+`terraform apply`
 
 Type **yes** to confirm and start deploying your infrastructure.
 
@@ -63,9 +63,9 @@ Type **yes** to confirm and start deploying your infrastructure.
 
 - Go to AWS EKS Console and open your cluster.
 
-- Go to the "Access" tab. Then, copy the access entry (or create a new one if none exists).
+- Go to the **Access** tab. Then, copy the access entry (or create a new one if none exists).
 
-- Select "Compute" tab: Ensure node group is active and meets desired state.
+- Select **Compute** tab: Ensure node group is active and meets desired state.
 
 - Restrict access so only authorized users can interact with the cluster.
 
