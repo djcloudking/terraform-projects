@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 output "lb_endpoint" {
   value = "http://${aws_lb.terramino.dns_name}"
 }
