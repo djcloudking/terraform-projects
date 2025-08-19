@@ -10,7 +10,7 @@ This project demonstrates how to deploy a payroll software application in multip
 
 Fahmacloud has designed a blueprint for a prototype payroll software. The software needs to be deployed in several countries, with each instance maintaining the same technology stack and infrastructure configuration. Terraform is used to automate and replicate deployments efficiently, reducing manual setup and ensuring consistency.
 
-**** Note: I was asked to provide a POC (Proof of Concept). This repo contains a simplified version of the POC I built so it’s easier to understand the deployment process. The payroll app’s source code is not included, and I’ve intentionally left out the security configuration details.***
+*** Note: I was asked to provide a POC (Proof of Concept). This repo contains a simplified version of the POC I built so it’s easier to understand the deployment process. The payroll app’s source code is not included, and I’ve intentionally left out the security configuration details.***
 
 
 ## Key Features
