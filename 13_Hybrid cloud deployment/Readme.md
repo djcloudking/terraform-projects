@@ -64,6 +64,30 @@ This will provision all required AWS resources for the payroll software in the s
 
 ---
 
+
+## What challenges I faced 
+
+- Terraform sometimes tried to apply changes to the wrong environment or failed due to misconfigured remote state. 
+
+- I had to troubleshoot provider configurations, backend settings, and module references to make deployments reliable. 
+
+- I realized configuring multiple AWS accounts and providers while ensuring isolated but manageable backend state is the solution.
+
+
+---
+
+
+## Why this is useful (Business Impact)
+
+**Consistency**: A standardized architecture across regions minimizes errors, which means fewer outages and a more reliable experience for customers. For the business, this consistency reduces support costs and speeds up deployment.
+
+**Scalability**: New markets like Canada, India or the UAE can be added quickly without redesigning the system, helping the business expand faster and capture revenue opportunities ahead of competitors.
+
+**Automation**: With Terraform automating infrastructure provisioning, engineers spend less time on manual setup and more time improving features, which accelerates product delivery and enhances customer satisfaction.
+
+
+---
+
 Voila! You have deployed a payroll software across the US and UK. 
 
 Note: If real-life, you should test the payroll app after deployment, and add several monitoring tools in place.  
