@@ -153,18 +153,6 @@ If you run into issues with the `user_data` script:
 
 ---
 
-## Final Result
-
-Once deployed, you will have:
-
-* A database server with a private IP output.
-* A web server with a fixed public IP address.
-* A security group allowing HTTP and HTTPS traffic.
-* A working bootstrap script running on the web server.
-
----
-
-
 ## Summary
 
 You’ve successfully:
