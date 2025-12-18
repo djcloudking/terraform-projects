@@ -1,34 +1,47 @@
-# Terraform Projects
+# Terraform Projects – Infrastructure as Code
 
-Welcome to the **Terraform Projects** repository. This is a collection of hands-on Infrastructure as Code (IaC) projects built using Terraform. Whether you're just starting out or looking to sharpen your cloud infrastructure skills, this repo is packed with real-world use cases and practical examples.
+This repository contains **Terraform examples focused on operational infrastructure**, not just deployments.
 
+The goal is to demonstrate:
+- Safe, repeatable infrastructure provisioning
+- Environments that can be supported and troubleshot in production
+- Clean IaC structure and naming conventions
 
-## What You'll Find Here
+## What This Project Demonstrates
+- Terraform basics applied to real AWS resources
+- Modular infrastructure design
+- State management awareness
+- Infrastructure that supports monitoring and operations
 
-Each folder is a self-contained project that covers a specific Terraform concept or deployment scenario. Projects range from beginner-friendly basics to more advanced workflows and cloud architectures.
+## Infrastructure Examples
+- EC2 instances with security groups
+- VPC and subnet configuration
+- IAM roles and policies
+- Basic monitoring-friendly setups
 
+## Tools & Technologies
+- Terraform
+- AWS (EC2, VPC, IAM)
+- AWS CLI
 
-## Requirements
+## Ops Perspective
+This repo is written from an **operations mindset**:
+- Infrastructure should be observable
+- Changes should be predictable
+- Rollbacks should be possible
+- Configurations should be readable by support teams
 
-* Terraform CLI
-* AWS CLI configured (for AWS-based projects)
-* Basic knowledge of cloud infrastructure (AWS preferred)
+## How to Use
+1. Clone the repository
+2. Review variables and providers
+3. Run `terraform init`
+4. Use `terraform plan` before applying
+5. Apply in a non-production AWS account
 
+## Why This Matters
+Many Cloud Ops and Infrastructure Support roles expect engineers to:
+- Read Terraform
+- Understand what it creates
+- Troubleshoot issues caused by IaC changes
 
-## Ideal For:
-
-* Cloud Engineers
-* DevOps Practitioners
-* Infrastructure Enthusiasts
-* Anyone learning Terraform 
-
-
-## Contributions
-
-Feel free to fork this repo and expand on any of the projects or submit new ones. If you find a bug or want to suggest improvements, open an issue or submit a pull request.
-
-## Contact
-
-Created and maintained by [DJ. Kone](https://github.com/djcloudking).
-Let’s connect on [LinkedIn](https://www.linkedin.com/in/djakaridiakone) or explore more on [my website for detailed tutorials](https://cloudwithdj.com).
-
+This repo shows that capability.
